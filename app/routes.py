@@ -2,15 +2,12 @@ from flask import render_template, flash, redirect, url_for
 from app import app
 
 from app.forms import LoginForm
+from app.models import User
 
 
 @app.route('/')
 def home():
-    students = [
-        {'name' : 'Fatima'},
-        {'name' : 'Mirelesger'},
-        {'name' : 'Ugur'}
-    ]
+    students = User.query.all()
     is_holiday = True
     return render_template(
         'index.html',
